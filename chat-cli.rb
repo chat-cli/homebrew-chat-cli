@@ -5,20 +5,20 @@
 class ChatCli < Formula
   desc "chat-cli is a command line tool for working with llms on Amazon Bedrock"
   homepage "https://github.com/chat-cli/chat-cli/"
-  version "0.4.0"
+  version "0.4.3"
 
   on_macos do
-    on_intel do
-      url "https://github.com/chat-cli/chat-cli/releases/download/v0.4.0/chat-cli_Darwin_x86_64.tar.gz"
-      sha256 "1b698d35480de420c4b1baf7d52247b7a828823131d47f718ac3cddb3ab4eda6"
+    if Hardware::CPU.intel?
+      url "https://github.com/chat-cli/chat-cli/releases/download/v0.4.3/chat-cli_Darwin_x86_64.tar.gz"
+      sha256 "8cdb2affba71e49522df831428456ddb8f6154f6a2b2d30daf508b59ec520645"
 
       def install
         bin.install "chat-cli"
       end
     end
-    on_arm do
-      url "https://github.com/chat-cli/chat-cli/releases/download/v0.4.0/chat-cli_Darwin_arm64.tar.gz"
-      sha256 "427359ab143b6c5432d24d59ad5b1c456c061f71df52c67e51e624452e1846f5"
+    if Hardware::CPU.arm?
+      url "https://github.com/chat-cli/chat-cli/releases/download/v0.4.3/chat-cli_Darwin_arm64.tar.gz"
+      sha256 "33b4b1b8eccdf576ba6ec107b06ffe38bdeed80a4279cb77773634105d29217e"
 
       def install
         bin.install "chat-cli"
@@ -27,20 +27,20 @@ class ChatCli < Formula
   end
 
   on_linux do
-    on_intel do
+    if Hardware::CPU.intel?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/chat-cli/chat-cli/releases/download/v0.4.0/chat-cli_Linux_x86_64.tar.gz"
-        sha256 "9a2cb9633e35843813d1e0fe7e2865cfd1075a791c40cde0bfd8e1a916438ec8"
+        url "https://github.com/chat-cli/chat-cli/releases/download/v0.4.3/chat-cli_Linux_x86_64.tar.gz"
+        sha256 "666e55e0f6a87ff74b849f2cbcc65e2681e80a4d82b292bede1d23d8d9dc0d6e"
 
         def install
           bin.install "chat-cli"
         end
       end
     end
-    on_arm do
+    if Hardware::CPU.arm?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/chat-cli/chat-cli/releases/download/v0.4.0/chat-cli_Linux_arm64.tar.gz"
-        sha256 "2277dad5b4f5dbcc62092cf50737c27cf5ac09018ea27f1ae0086582eb86e3f5"
+        url "https://github.com/chat-cli/chat-cli/releases/download/v0.4.3/chat-cli_Linux_arm64.tar.gz"
+        sha256 "467326a651bfa078026bea1ce7e426da9e25213628e2fbb9c68865493146bb6d"
 
         def install
           bin.install "chat-cli"
